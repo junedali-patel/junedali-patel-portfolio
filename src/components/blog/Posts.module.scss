@@ -1,0 +1,54 @@
+.hover {
+    position: relative;
+    border: 1px solid var(--neutral-alpha-weak);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    background: var(--neutral-background);
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        z-index: -1;
+        background: linear-gradient(45deg, var(--brand-background-strong), var(--accent-background-strong), var(--brand-background-strong));
+        background-size: 200% 200%;
+        animation: gradient 3s ease infinite;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: var(--radius-l);
+    }
+
+    &:hover {
+        border-color: transparent;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px var(--neutral-alpha-weak);
+        
+        &::before {
+            opacity: 1;
+        }
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.image {
+    transition: transform 0.3s ease;
+    transform: scale(1);
+    
+    .hover:hover & {
+        transform: scale(1.02);
+    }
+}
